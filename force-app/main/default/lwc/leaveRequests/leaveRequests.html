@@ -2,13 +2,14 @@
 
     <lightning-card>    
       <template if:true={getLeaves_respective_manager}>
+        <div class="slds-var-p-around_small" style="height: 500px;">
             <lightning-datatable
                 data={getLeaves_respective_manager}
                 columns={columns}
                 key-field="Id"
                 hide-checkbox-column="true" 
                 onrowaction={modalhandler}
-            ></lightning-datatable>
+            ></lightning-datatable></div>
         </template> 
     </lightning-card>
 
