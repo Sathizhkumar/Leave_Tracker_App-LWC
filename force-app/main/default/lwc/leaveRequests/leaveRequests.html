@@ -1,6 +1,16 @@
 <template>
 
-    <lightning-card>    
+    <lightning-card>   
+        
+        <div class="container">
+            <div class="count-container">
+            <div class="circle bluecolur" title="Pending Count">Pending Count: {pendingCount}</div> </div>
+            <div class="circle greencolur" title="Aprroved Count">Aprroved Count: {approvedCount}</div>
+            <div class="circle orangecolur" title="Rejected Count">Rejected Count: {rejectedCount}</div>
+        </div>
+
+        <div class="slds-m-top_medium"></div> <!-- Add empty div for spacing -->
+        
       <template if:true={getLeaves_respective_manager}>
         <div class="slds-var-p-around_small" style="height: 500px;">
             <lightning-datatable

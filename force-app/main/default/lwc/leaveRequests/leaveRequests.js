@@ -31,6 +31,11 @@ export default class LeaveRequests extends LightningElement {
     leaveRequestwireResult_respective_manager;
     curerntuserName = Id;
 
+    // To track the counts
+    pendingCount = 0;
+    approvedCount = 0;
+    rejectedCount = 0;
+
     @wire(getMyLeave)
     getLeaveResult(result) {
         this.leaveRequestwireResult_respective_manager = result;
@@ -40,6 +45,10 @@ export default class LeaveRequests extends LightningElement {
             cellclass: a.Status__c=='Approved' ? 'slds-theme_success' : a.Status__c == 'Rejected' ? 'slds-theme_warning' :'',
             isEditDisabled: a.Status__c != 'Pending'
         }));
+        this.pendingCount = this.getLeaves_respective_manager.filter(a => a.Status__c == 'Pending').length;
+        this.approvedCount = this.getLeaves_respective_manager.filter(a => a.Status__c == 'Approved').length;
+        this.rejectedCount = this.getLeaves_respective_manager.filter(a => a.Status__c == 'Rejected').length;
+
     }
         if (result.error) {
             console.log('Fetching failed ', result.error);

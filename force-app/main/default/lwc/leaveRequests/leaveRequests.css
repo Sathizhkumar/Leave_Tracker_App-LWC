@@ -1,3 +1,35 @@
-.search-container {
-    padding-left: 1rem; /* Adjust the value as needed */
-  }
+.container {
+  display: flex;
+}
+
+.circle {
+  width: 150px; /* Adjust the width as needed */
+  height: 30px;
+  border-radius: 15px; /* Adjust the border-radius as needed */
+  color: #ffffff; /* Replace with the desired text color */
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.bluecolur {
+  background-color: blue;
+  color: white;
+}
+
+.greencolur {
+  background-color: green;
+  color: white;
+}
+
+.orangecolur {
+  background-color: orange;
+  color: white;
+}
+
+.count-container{
+  padding-left: 1rem; /* Adjust the value as needed */
+}
