@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.circle {
+  width: 150px; /* Adjust the width as needed */
+  height: 30px;
+  border-radius: 15px; /* Adjust the border-radius as needed */
+  background-color: #ff0000; /* Replace with your desired color */
+  color: #ffffff; /* Replace with the desired text color */
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-section {
+  margin-left: auto;
+  margin-right: 10px; 
+}
+
+.add-button {
+  margin-right: 5px; 
+}
+
+.blue {
+  background-color: blue;
+  color: white;
+}
+
+.green {
+  background-color: green;
+  color: white;
+}
+
+.orange {
+  background-color: orange;
+  color: white;
+}
+
+.count-container{
+  padding-left: 1rem; /* Adjust the value as needed */
+}

@@ -1,15 +1,18 @@
-# Leave_Tracker_App-LWC
-This is a sample Leave Tracker LWC (Lightning Web Component) application developed using Salesforce's Lightning Platform. The application allows end users to add new request and manage their leaves, while supervisors can review and approve or reject leave requests.
+# Salesforce DX Project: Next Steps
 
-# Features
-1. Leave request submission: Employees can submit new leave requests by specifying the From date, To date, and reason.
-2. Leave balance tracking: The application keeps track of the employees' leave balances and displays them on the user interface.
-3. Leave request approval: Respective end users managers can view and approve or reject leave requests submitted by their team members.
-4. Email notifications: Automatic email notifications are sent to employees upon leave request submission and approval/rejection.
-5. Leave history: The application maintains a history of leave requests in the Leave request object.
+Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
 
-# Technologies Used
-1. Salesforce Lightning Platform: The application is built using Lightning Web Components, a modern web standard for building Salesforce applications.
-2. Apex: The server-side language used for handling business logic and database operations in Salesforce.
-3. Salesforce Lightning Design System (SLDS): A CSS framework provided by Salesforce for creating a consistent and responsive user interface.
-4. Salesforce DX: A set of tools and features that facilitate the development and deployment (Git, ANT tool & Change set) of Salesforce applications.
+## How Do You Plan to Deploy Your Changes?
+
+Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+
+## Configure Your Salesforce DX Project
+
+The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+
+## Read All About It
+
+- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
+- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
+- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
+- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
