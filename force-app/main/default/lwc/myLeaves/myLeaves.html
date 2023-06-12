@@ -1,7 +1,20 @@
 <template>
 
+    <div class="spinner">
+        <template if:true={isLoading}>
+             <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+             </lightning-spinner>
+        </template>
+    </div>
+    
     <lightning-card>    
        
+        <div class="search-container">
+            <lightning-input type="search"  label="Search by Reason" onchange={handleSearch}></lightning-input>
+        </div>
+        <div class="slds-m-top_medium"></div> <!-- Add empty div for spacing -->
+
+
         <div class="container">
             <div class="count-container">
             <div class="circle blue" title="Pending Count">Pending Count: {pendingCount}</div> </div>

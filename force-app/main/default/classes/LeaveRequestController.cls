@@ -1,4 +1,6 @@
 public with sharing class LeaveRequestController {
+
+    // Get all the records which created by native user.
     @AuraEnabled(cacheable=true)
     public static List<Leave_Request__c> getLeave(){
         try{
@@ -12,7 +14,7 @@ public with sharing class LeaveRequestController {
         }
     }
 
-
+// Get leaves respective to related manager records only.
     @AuraEnabled(cacheable=true)
     public static List<Leave_Request__c> getMyLeave(){
         try{

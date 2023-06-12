@@ -5,7 +5,7 @@ import Id from '@salesforce/user/Id';
 import { refreshApex } from '@salesforce/apex';
 
 const columns = [
-    { label: 'NAME', fieldName: 'Name', type: 'text', cellAttributes: { class: {fieldName: 'cellclass' }} },
+    { label: 'Req ID', fieldName: 'Name', type: 'text', cellAttributes: { class: {fieldName: 'cellclass' }} },
     { label: 'FROM DATE', fieldName: 'From_Date__c', type: 'date' , cellAttributes: { class: {fieldName: 'cellclass' }} },
     { label: 'TO DATE', fieldName: 'To_Date__c', type: 'date', cellAttributes: { class: {fieldName: 'cellclass' }}  },
     { label: 'REASON', fieldName: 'Reason__c', type: 'text' , cellAttributes: { class: {fieldName: 'cellclass' }} },
@@ -35,22 +35,27 @@ export default class MyLeaves extends LightningElement {
     approvedCount = 0;
     rejectedCount = 0;
     
+    searchTerm = '';
+    originalLeaves = [];
+
+    @track isLoading = false;
+
     @wire(getLeavefromapex)
     getLeaveResult(result){
         this.leaveRequestwireResult = result;
+        this.isLoading = true;
         if(result.data){
             this.getLeaves = result.data.map(a =>({
                 ...a,
                 cellclass: a.Status__c=='Approved' ? 'slds-theme_success' : a.Status__c == 'Rejected' ? 'slds-theme_warning' :'',
                 isEditDisabled: a.Status__c != 'Pending'
             }));
-            this.pendingCount = this.getLeaves.filter(a => a.Status__c == 'Pending').length;
-            this.approvedCount = this.getLeaves.filter(a => a.Status__c == 'Approved').length;
-            this.rejectedCount = this.getLeaves.filter(a => a.Status__c == 'Rejected').length;
-
+            this.updateCountsAndFilterData();
+            this.isLoading = false; 
         }
         if(result.error){
             console.log('Fetching failed ', result.error);
+            this.isLoading = false;
         }
     } 
 
@@ -103,5 +108,31 @@ export default class MyLeaves extends LightningElement {
         });
         this.dispatchEvent(event);
     }
-   
+
+    updateCountsAndFilterData() {
+    // Calculate the counts and filter the data based on the search term
+    this.pendingCount = this.getLeaves.filter(leave => leave.Status__c === 'Pending').length;
+    this.approvedCount = this.getLeaves.filter(leave => leave.Status__c === 'Approved').length;
+    this.rejectedCount = this.getLeaves.filter(leave => leave.Status__c === 'Rejected').length;
+    }
+
+
+    handleSearch(event) {
+        const searchTerm = event.target.value.toLowerCase();
+
+        if (searchTerm) {
+        this.getLeaves = this.getLeaves.filter(leave => leave.Name.toLowerCase().includes(searchTerm));
+        } 
+       
+        else {
+        // If search term is empty, show all the data
+        this.getLeaves = [...this.leaveRequestwireResult.data.map(a =>({
+            ...a,
+            cellclass: a.Status__c=='Approved' ? 'slds-theme_success' : a.Status__c == 'Rejected' ? 'slds-theme_warning' :'',
+            isEditDisabled: a.Status__c != 'Pending'
+        }))];
+        console.log ('Handle search : ' +this.getLeaves);
         }
+    }
+
+}
